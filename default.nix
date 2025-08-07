@@ -9,7 +9,7 @@
     ./cmp.nix
     ./lualine.nix
     ./snip.nix
-    #./extraPlugins.nix
+    ./extraPlugins.nix
   ];
   vim = {
     extraLuaFiles = [
