@@ -10,7 +10,7 @@
           enable = true;
           server = "ccls";
         };
-      }
+      };
       python = {
         enable = true;
         lsp.enable = true;
