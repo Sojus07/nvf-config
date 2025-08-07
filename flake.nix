@@ -10,6 +10,10 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
+    packages.${system} = {
+      inherit pkgs;
+      modules = [ ./default.nix ];
+    }.nvim;
     
     nixosModules.default = { pkgs, lib, ... }: {
       imports = [
