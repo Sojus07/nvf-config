@@ -14,8 +14,7 @@
       modules = [ ./default.nix ];
     };
   in {
-    packages.${system}.default = nvimWrapped.neovim;
-
+    packages.${system}.nvim = nvimWrapped.neovim;
     nixosModules.default = { pkgs, lib, ... }: {
       imports = [ nvf.nixosModules.default ];
       programs.nvf.settings = import ./default.nix;

@@ -40,7 +40,6 @@
           type = "alejandra";
         };
         lsp.enable = true;
-        treesitter.enable = true;
       };
     };
     lsp = {
