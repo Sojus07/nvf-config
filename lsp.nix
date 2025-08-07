@@ -6,8 +6,11 @@
     languages = {
       clang = {
         enable = true;
-        lsp = { enable = true; server = "${pkgs.rocmPackages.llvm.clang-unwrapped}"; };
-      };
+        lsp = {
+          enable = true;
+          server = "ccls";
+        };
+      }
       python = {
         enable = true;
         lsp.enable = true;
