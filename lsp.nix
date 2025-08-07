@@ -6,7 +6,7 @@
     languages = {
       clang = {
         enable = true;
-        lsp.enable = true;
+        lsp = { enable = true; server = "${pkgs.clangd}"; };
       };
       python = {
         enable = true;
