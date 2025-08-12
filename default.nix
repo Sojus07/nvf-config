@@ -22,7 +22,7 @@
     telescope.enable = true;
     theme = {
       enable = true;
-      name = "base16";
+      name = "oxocarbon";
       base16-colors = {
         base00 = "#090a0a";
         base01 = "#3C3E41";
