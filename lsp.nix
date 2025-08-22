@@ -6,27 +6,31 @@
     languages = {
       clang = {
         enable = true;
-        lsp = {
-          enable = true;
-          server = "ccls";
-        };
+        lsp.server = "ccls"; 
       };
       python = {
         enable = true;
         lsp.enable = true;
+        format = {
+          enable = true;
+          type = "ruff";        
+        };
       };
       go = {
         enable = true;
         lsp.enable = true;
+        format.enable = true;
       };
       lua = {
-        enable = true; 
+        enable = true;
+        lsp.enable = true;
+        format.enable = true;
       };
       rust = {
         enable = true;
-        dap.enable = true;
-        format.enable = true;
         lsp.enable = true;
+        format.enable = true;
+        dap.enable = true;
       };
       bash = {
         enable = true;
@@ -35,21 +39,18 @@
       };
       nix = {
         enable = true;
-        extraDiagnostics = {
-          enable = true;
-        };
+        lsp.enable = true;
         format = {
           enable = true;
-          type = "alejandra";
+          type = "alejandra"; 
         };
-        lsp.enable = true;
+        extraDiagnostics.enable = true;
       };
     };
     lsp = {
-      lspkind.enable = true;    
-      trouble = {
-        enable = true;
-      };
+      lspkind.enable = true;
+      trouble.enable = true;
+      lspsaga.enable = true; 
     };
   };
 }

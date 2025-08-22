@@ -8,7 +8,6 @@
     ./neotree.nix
     ./cmp.nix
     ./lualine.nix
-    ./snip.nix
     ./extraPlugins.nix
   ];
   vim = {

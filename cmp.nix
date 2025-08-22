@@ -6,23 +6,26 @@
     extraLuaFiles = [
       (builtins.path {
         path = ./raw/cmp.lua;
-        name = "my-lua-file";
+        name = "cmp-config-raw";
       })
     ];
+    
     autocomplete = {
       nvim-cmp = {
         enable = true;
-        setupOpts = {
-          completion = {
-            completeopt = "menu,menuone,noinsert,noselect";
-          };
+        sources = {
+          nvim_lsp = "[LSP]";
+          path     = "[PATH]";
+          nvim_lua = "[LUA]";
         };
-        #sourcePlugins = [
-        #  "crates-nvim"
-        #  "cmp-nvim-lsp"
-        #  "rustaceanvim"
-        #];
+          
+        sourcePlugins = with pkgs.vimPlugins; [
+          cmp-nvim-lsp
+          cmp-path
+          cmp-nvim-lua
+        ];
       };
     };
   };
 }
+
