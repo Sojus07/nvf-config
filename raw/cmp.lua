@@ -46,8 +46,7 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({
     ["<Down>"]  = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
     ["<Up>"]    = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-    ["<Right>"] = cmp.mapping.confirm({ select = true }),
-    --["<CR>"]    = cmp.mapping.confirm({ select = true }),
+    ["<CR>"]    = cmp.mapping.confirm({ select = true }),
     ["<Left>"]  = cmp.mapping.abort(),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"]   = cmp.mapping.abort(),
