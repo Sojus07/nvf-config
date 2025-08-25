@@ -21,8 +21,13 @@ map('n', '<c-t>', ":ToggleTerm size=15<CR>", opts)
 map('n', '<c-n>', ":Neotree filesystem reveal toggle<CR>", opts)
 map('v', '<Tab>', '>gv', opts)
 map('v', '<S-Tab>', '<gv', opts)
-map('n', '<leader>ff', 'Telescope find_files<CR>', opts)
-map('n', '<leader>gs', 'Telescope grep_string<CR>', opts)
+map('n', '<leader>ff', ":Telescope find_files<CR>", opts)
+map('n', '<leader>gs', ":Telescope live_grep<CR>", opts)
+
+map("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
+map("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
+map("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+map("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -33,6 +38,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
   end,
 })
+
 vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#5c6370", bg = "NONE", italic = true })
 
 vim.cmd [[
@@ -47,7 +53,7 @@ vim.cmd [[
   cnoreabbrev W w
   cnoreabbrev Q q
   cnoreabbrev Qall qall 
-  
+
   hi Normal guibg=NONE ctermbg=NONE
   hi NormalNC guibg=NONE ctermbg=NONE
   hi EndOfBuffer guibg=NONE ctermbg=NONE

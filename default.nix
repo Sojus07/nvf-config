@@ -19,6 +19,11 @@
     ];
     autopairs.nvim-autopairs.enable = true;
     telescope.enable = true;
+    binds = {
+      whichKey = {
+        enable = true;
+      };
+    };
     theme = {
       enable = true;
       name = "oxocarbon";

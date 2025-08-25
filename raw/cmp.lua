@@ -1,18 +1,38 @@
 local cmp = require("cmp")
 local lspkind = require("lspkind")
+local luasnip = require("luasnip")
+
+require("luasnip.loaders.from_vscode").lazy_load()
 
 cmp.setup({
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+
   formatting = {
     format = function(entry, vim_item)
       vim_item.kind = lspkind.symbolic(vim_item.kind, { mode = "symbol" })
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
         path     = "[PATH]",
+        buffer   = "[BUF]",
         nvim_lua = "[LUA]",
+        luasnip  = "[SNIP]",
+        nixpkgs  = "[NIX]",
       })[entry.source.name]
       return vim_item
     end,
   },
+
+  sources = cmp.config.sources({
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+    { name = "nvim_lua" },
+    { name = "path" },
+    { name = "buffer" },
+  }),
 
   sorting = {
     priority_weight = 2,
@@ -47,7 +67,24 @@ cmp.setup({
     ["<Down>"]  = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
     ["<Up>"]    = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
     ["<CR>"]    = cmp.mapping.confirm({ select = true }),
-    ["<Left>"]  = cmp.mapping.abort(),
+    ["<Tab>"]   = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"]   = cmp.mapping.abort(),
   }),
