@@ -18,7 +18,7 @@
     nixosModules.default = { pkgs, lib, ... }: {
       imports = [ nvf.nixosModules.default ];
       environment.systemPackages = with pkgs; [
-        nil
+        nixd
       ];
       programs.nvf = { enable = true; settings = import ./default.nix; };
     };

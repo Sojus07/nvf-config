@@ -40,6 +40,7 @@
       nix = {
         enable = true;
         lsp.enable = true;
+        lsp.package = pkgs.nixd;
         format = {
           enable = true;
           type = "alejandra"; 
